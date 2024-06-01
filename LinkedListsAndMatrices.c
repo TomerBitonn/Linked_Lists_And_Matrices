@@ -369,7 +369,7 @@ void printMatrix(int A[][COLS], int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
-			printf("%d ", A[i][j]);
+			printf("% 4d", A[i][j]);
 		}
 		printf("\n");
 	}
@@ -382,7 +382,7 @@ void printDynamicMatrix(int** A, int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
-			printf("%d ", A[i][j]);
+			printf("% 4d", A[i][j]);
 		}
 		printf("\n");
 	}
