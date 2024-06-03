@@ -1,8 +1,8 @@
 /* We built this program as part of an advanced C language course.
-This program implements functions on Pointers and Dynamic memory allocation, Matrices, and Linked Lists.
-Above each function there is an explanation.
+   This program implements functions on Pointers and Dynamic memory allocation, Matrices, and Linked Lists.
+   Above each function there is an explanation.
 
-Made By: Tomer Biton & Maor Shalit */
+   Made By: Tomer Biton & Maor Shalit */
 
 #define _CRT_SECURE_NO_WARNINGS
 
