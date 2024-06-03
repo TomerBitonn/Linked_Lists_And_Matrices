@@ -1,4 +1,4 @@
-/* We built this program as part of an advanced C programming course.
+/* We built this program as part of an advanced C language course.
 The program implements functions on Pointers and Dynamic memory allocation, Matrices, and Linked Lists.
 Above each function there is an explanation.
 
@@ -64,7 +64,7 @@ void printArray(Number* arr, int size);
 void inputMatrix(int A[][COLS], int rows, int cols);
 void printMatrix(int A[][COLS], int rows, int cols);
 void printDynamicMatrix(int** A, int rows, int cols);
-void freeMatrix(int** A, int rows);
+void freeMatrix(void** A, int rows);
 void inputDynamicMatrix(int** A, int rows, int cols);
 void printList(Item* lst);
 void freeList(Item* lst);
@@ -90,7 +90,7 @@ int main()
 			{
 			case 1: Ex1(); break;
 			case 2: Ex2(); break;
-			case 3: Ex3(); break; 
+			case 3: Ex3(); break;
 			}
 		} while (all_Ex_in_loop && select);
 	return 0;
@@ -104,8 +104,15 @@ void Ex1()
 	extraint n1, n2;
 	int* p_size = NULL;
 
-	printf("\nEnter 2 positive numbers called n1, n2.\nAttention! n2 must be greater than n1 (n2 > n1): ");
-	scanf("%llu %llu", &n1, &n2);
+	printf("\nWelcome to Exercise 1!\n");
+
+	printf("\nEnter 2 positive numbers called 'num1' and 'num2'.\n"
+		"Attention! 'num2' must be greater than 'num1' (num2 > num1).\n\n");
+	
+	printf("Enter num1: ");
+	scanf("%llu", &n1);
+	printf("Enter num2: ");
+	scanf("%llu", &n2);
 
 	prime_arr = primeSums(n1, n2, &p_size);
 
@@ -119,31 +126,42 @@ void Ex2()
 	int** B = NULL;
 	int A[ROWS][COLS];
 
-	printf("\nEnter the numbers of the matrix: \n");
-	inputMatrix(A,ROWS,COLS);
+	printf("\nWelcome to Exercise 2!\n");
+
+	printf("\nEnter the numbers of the matrix (%d * %d)\n", ROWS, COLS);
+	inputMatrix(A, ROWS, COLS);
 
 	printf("\nOriginal matrix:\n\n");
-	printMatrix(A,ROWS,COLS);
+	printMatrix(A, ROWS, COLS);
 	printf("\n\n");
 
-	B = matrixMaxNeighbor(A,ROWS,COLS);
+	B = matrixMaxNeighbor(A, ROWS, COLS);
 	printf("Matrix with max neighbors: \n\n");
-	printDynamicMatrix(B,ROWS,COLS);
+	printDynamicMatrix(B, ROWS, COLS);
 	printf("\n\n");
 
-	freeMatrix(B,ROWS);
+	freeMatrix(B, ROWS);
 }
 
 void Ex3()
 {
 	Item* pL1 = NULL, * pL2 = NULL;
-	int** A = NULL;
+	int** A = NULL, rows, cols;
 
-	A = allocMatrix(ROWS,COLS);
-	inputDynamicMatrix(A,ROWS,COLS);
+	printf("\nWelcome to Exercise 3!\n");
+
+	printf("\nEnter the matrix size\n");
+	printf("Number of rows: ");
+	scanf("%d", &rows);
+	printf("Number of columns: ");
+	scanf("%d", &cols);
+
+	A = allocMatrix(rows, cols);
+	printf("\nEnter the numbers of the matrix (%d * %d)\n", rows, cols);
+	inputDynamicMatrix(A, rows, cols);
 	printf("\n\nThe matrix is:\n\n");
-	printDynamicMatrix(A,ROWS,COLS);
-	createThreeList(A,ROWS,COLS,&pL1,&pL2);
+	printDynamicMatrix(A, rows, cols);
+	createThreeList(A, rows, cols, &pL1, &pL2);
 
 	printf("\nNow printing Linked List 1 (pL1):\n\n");
 	printList(pL1);
@@ -151,7 +169,7 @@ void Ex3()
 	printf("\nNow printing Linked List 2 (pL2):\n\n");
 	printList(pL2);
 
-	freeMatrix(A, ROWS);
+	freeMatrix(A, rows);
 	freeList(pL1);
 	freeList(pL2);
 }
@@ -187,7 +205,7 @@ int digitSum(extraint num)
 
 /* This function get 2 natural numbers and calculate all of
    the prime numbers in the range between them. It returns a pointer
-   to an array with all of the numbers. */
+   to a an array with all of the numbers, and return by reference the size of the array. */
 Number* primeSums(extraint n1, extraint n2, int* p_size)
 {
 	extraint i;
@@ -228,7 +246,7 @@ Number* primeSums(extraint n1, extraint n2, int* p_size)
 
 /* Ex2 */
 /* This function get the size of the new matrix and allocate dynamic memory for it.
-It returns a pointer to the adress of the matrix. */
+   It returns a pointer to the adress of the matrix. */
 int** allocMatrix(int rows, int cols)
 {
 	int** matrixB = NULL, i;
@@ -243,23 +261,24 @@ int** allocMatrix(int rows, int cols)
 	return matrixB;
 }
 
-/* This function recieve 2D array, num of cols, num of rows, and index of a number in the matrix A.
-It returns the maximum neighbor of the index. */
+/* This function recieve a 2D array, num of rows, num of cols, and index of a number in the matrix A.
+   It returns the maximum neighbor of the index. */
 int neighborMax(int A[][COLS], int rows, int cols, int i, int j)
 {
 	int max = INT_MIN;
 	if (i - 1 >= 0 && A[i - 1][j] > max)
-		max = A[i-1][j];
+		max = A[i - 1][j];
 	if (i + 1 < rows && A[i + 1][j] > max)
-		max = A[i+1][j];
-	if (j + 1 < cols && A[i][j+1] > max)
-		max = A[i][j+1];
-	if (j - 1 >= 0 && A[i][j-1] > max)
-		max = A[i][j-1];
+		max = A[i + 1][j];
+	if (j + 1 < cols && A[i][j + 1] > max)
+		max = A[i][j + 1];
+	if (j - 1 >= 0 && A[i][j - 1] > max)
+		max = A[i][j - 1];
 	return max;
 }
 
-/* This function create a new matrix 'B' and return a pointer to the adress of the new matrix. */
+/* This function creates a new matrix 'B', that built from the maximun neighbors of the inserted matrix.
+   It returns a pointer to the adress of the new matrix. */
 int** matrixMaxNeighbor(int A[][COLS], int rows, int cols)
 {
 	int** B = NULL, i, j;
@@ -311,9 +330,9 @@ void insert(Item** head, Triad element)
 }
 
 /* This function recieve a matrix, and seperate it into two groups.
-It return by reference 2 linked lists - 1 for each group.
-Group 1 - The elements in the matrix are equal to the coordinate values.
-Group 2 - The members of the matrix whose values constitutes an inovice series. */
+   It return by reference 2 linked lists - 1 for each group.
+   Group 1 - The elements in the matrix are equal to the coordinate values.
+   Group 2 - The members of the matrix whose values constitutes an inovice series. */
 void createThreeList(int** A, int rows, int cols, Item** pL1, Item** pL2)
 {
 	int i, j;
@@ -347,6 +366,7 @@ void printArray(Number* arr, int size)
 		printf("\nThe number is: %llu\n", arr[i].num);
 		printf("The sum is: %d\n", arr[i].sum);
 	}
+	printf("\n");
 }
 
 void inputMatrix(int A[][COLS], int rows, int cols)
@@ -356,7 +376,7 @@ void inputMatrix(int A[][COLS], int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
-			printf("Enter number: ");
+			printf("Enter number [%d][%d]: ", i, j);
 			scanf("%d", &A[i][j]);
 		}
 	}
@@ -369,7 +389,7 @@ void printMatrix(int A[][COLS], int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
-			printf("% 4d", A[i][j]);
+			printf("% 4d ", A[i][j]);
 		}
 		printf("\n");
 	}
@@ -382,13 +402,13 @@ void printDynamicMatrix(int** A, int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
-			printf("% 4d", A[i][j]);
+			printf("% 4d ", A[i][j]);
 		}
 		printf("\n");
 	}
 }
 
-void freeMatrix(int** A, int rows)
+void freeMatrix(void** A, int rows)
 {
 	int i;
 	for (i = 0; i < rows; i++)
@@ -396,15 +416,14 @@ void freeMatrix(int** A, int rows)
 	free(A);
 }
 
-void inputDynamicMatrix(int** matrix, int rows, int cols)
+void inputDynamicMatrix(int** A, int rows, int cols)
 {
-	printf("\nEnter the elements of the matrix:\n");
-	for (int i = 0; i < rows; i++) 
+	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < cols; j++) 
+		for (int j = 0; j < cols; j++)
 		{
-			printf("Element [%d][%d]: ", i, j);
-			scanf("%d", &matrix[i][j]);
+			printf("Enter Number [%d][%d]: ", i, j);
+			scanf("%d", &A[i][j]);
 		}
 	}
 }
@@ -415,20 +434,21 @@ void printList(Item* lst)
 
 	while (temp)
 	{
-		printf("-> i = %d j = %d value = %d \n", temp->data.i, temp->data.j, temp->data.value);
+		printf("-> row = %d | col = %d | value = %d \n", temp->data.i, temp->data.j, temp->data.value);
 		temp = temp->next;
 	}
-	printf("-> NULL\n\nEnd of list\n");
+	printf("-> NULL\n\nEnd of list\n\n");
 }
 
 void freeList(Item* lst)
 {
 	Item* temp = lst;
-	
+
 	while (temp)
 	{
 		temp = lst->next;
 		free(lst);
+		lst = NULL;
 		lst = temp;
 	}
 }
