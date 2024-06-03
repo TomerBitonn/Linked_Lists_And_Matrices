@@ -205,7 +205,7 @@ int digitSum(extraint num)
 
 /* This function get 2 natural numbers and calculate all of
    the prime numbers in the range between them. It returns a pointer
-   to a an array with all of the numbers, and return by reference the size of the array. */
+   to an array with all of the numbers, and modifies the size of the array by using pointers. */
 Number* primeSums(extraint n1, extraint n2, int* p_size)
 {
 	extraint i;
@@ -329,8 +329,8 @@ void insert(Item** head, Triad element)
 	}
 }
 
-/* This function recieve a matrix, and seperate it into two groups.
-   It return by reference 2 linked lists - 1 for each group.
+/* This function gets a matrix and its size, and two linked lists.
+   It seperate the matrix into two groups, and modifies the lists using pointers.
    Group 1 - The elements in the matrix are equal to the coordinate values.
    Group 2 - The members of the matrix whose values constitutes an inovice series. */
 void createThreeList(int** A, int rows, int cols, Item** pL1, Item** pL2)
