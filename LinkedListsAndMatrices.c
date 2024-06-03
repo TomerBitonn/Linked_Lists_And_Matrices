@@ -418,9 +418,10 @@ void freeMatrix(void** A, int rows)
 
 void inputDynamicMatrix(int** A, int rows, int cols)
 {
-	for (int i = 0; i < rows; i++)
+	int i, j;
+	for (i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < cols; j++)
+		for (j = 0; j < cols; j++)
 		{
 			printf("Enter Number [%d][%d]: ", i, j);
 			scanf("%d", &A[i][j]);
