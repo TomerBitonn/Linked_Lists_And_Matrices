@@ -1,5 +1,5 @@
 /* We built this program as part of an advanced C language course.
-The program implements functions on Pointers and Dynamic memory allocation, Matrices, and Linked Lists.
+This program implements functions on Pointers and Dynamic memory allocation, Matrices, and Linked Lists.
 Above each function there is an explanation.
 
 Made By: Tomer Biton & Maor Shalit */
