@@ -277,7 +277,7 @@ int neighborMax(int A[][COLS], int rows, int cols, int i, int j)
 	return max;
 }
 
-/* This function creates a new matrix 'B', that built from the maximun neighbors of the inserted matrix.
+/* This function creates a new matrix 'B', that built from the maximum neighbors of the inserted matrix.
    It returns a pointer to the adress of the new matrix. */
 int** matrixMaxNeighbor(int A[][COLS], int rows, int cols)
 {
