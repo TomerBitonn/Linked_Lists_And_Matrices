@@ -1,1 +1,6 @@
-﻿  Linked_Lists_And_Matrices.vcxproj -> C:\Users\tomer\OneDrive\Desktop\tomer git files\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices\Debug\Linked_Lists_And_Matrices.exe
+﻿  Linked_Lists_And_Matrices.c
+C:\Users\tomer\OneDrive\Desktop\tomer git files\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices.c(117,32): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\tomer\OneDrive\Desktop\tomer git files\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices.c(117,32): warning C4024: 'primeSums': different types for formal and actual parameter 3
+C:\Users\tomer\OneDrive\Desktop\tomer git files\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices.c(119,24): warning C4047: 'function': 'int' differs in levels of indirection from 'int *'
+C:\Users\tomer\OneDrive\Desktop\tomer git files\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices.c(119,24): warning C4024: 'printArray': different types for formal and actual parameter 2
+  Linked_Lists_And_Matrices.vcxproj -> C:\Users\tomer\OneDrive\Desktop\tomer git files\Linked_Lists_And_Matrices\Linked_Lists_And_Matrices\Debug\Linked_Lists_And_Matrices.exe

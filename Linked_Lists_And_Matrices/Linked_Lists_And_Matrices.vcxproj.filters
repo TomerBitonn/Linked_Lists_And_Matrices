@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Linked_Lists_And_Matrics.c">
+    <ClCompile Include="Linked_Lists_And_Matrices.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
